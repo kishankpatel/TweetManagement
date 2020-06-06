@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   include Clearance::Controller
+  include ActionController::MimeResponds
+  before_action :require_login
 
   def form_authenticity_token; end
   rescue_from CanCan::AccessDenied do |exception|

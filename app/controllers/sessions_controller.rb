@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < Clearance::SessionsController
-
+  skip_before_action :require_login
   # POST /sign_in
   def create
     @user = authenticate(params)

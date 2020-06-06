@@ -5,6 +5,7 @@ user_data = [
   { email: 'user2@test.com' }
 ]
 password = 'test1234'
-user_data.each do |user| 
-  User.create(email: user[:email], password: password, is_admin: user[:is_admin])
+user_data.each do |user|
+  user[:password] = password
+  User.create(user)
 end
