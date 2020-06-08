@@ -1,4 +1,4 @@
-class TweetsController < ApplicationController
+class V1::TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :update, :destroy]
   authorize_resource
 
@@ -20,7 +20,7 @@ class TweetsController < ApplicationController
 
     if @tweet.save
       @tweet.update_attribute :tweet_by, current_user.id
-      render json: @tweet, status: :created, location: @tweet
+      render json: @tweet, status: :created
     else
       render json: @tweet.errors, status: :unprocessable_entity
     end

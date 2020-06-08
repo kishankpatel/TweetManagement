@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PasswordResetsController, type: :controller do
+RSpec.describe V1::PasswordResetsController, type: :controller do
   before(:each) do
     @user = FactoryBot.create(:user, email: 'user@test.com')
   end

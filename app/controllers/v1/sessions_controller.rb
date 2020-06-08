@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SessionsController < Clearance::SessionsController
+class V1::SessionsController < Clearance::SessionsController
   skip_before_action :require_login
   # POST /sign_in
   def create

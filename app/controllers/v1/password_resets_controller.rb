@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PasswordResetsController < Clearance::BaseController
+class V1::PasswordResetsController < Clearance::BaseController
   skip_before_action :require_login
   skip_authorize_resource
 

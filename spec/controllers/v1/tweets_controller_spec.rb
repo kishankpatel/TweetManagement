@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe TweetsController, type: :controller do
+RSpec.describe V1::TweetsController, type: :controller do
   before(:each) do
     @admin_user = FactoryBot.create(:user, is_admin: true)
     @user1 = FactoryBot.create(:user)
@@ -29,6 +29,24 @@ RSpec.describe TweetsController, type: :controller do
       sign_in_as(@user2)
       post :create, params: {tweet: {name: 'test', description: 'sample description'}}, format: :json
       expect(response.status).to eq(201)
+    end
+  end
+
+  describe '#update' do
+    it "should verify a user can't update a tweet of someone else" do
+      sign_in_as(@user2)
+      patch :update, params: {id: @tweet1.id, tweet: {name: 'updated tweet'}}, format: :json
+      expect(response.status).to eq(401)
+    end
+    it "should verify a user can update his/her own tweet" do
+      sign_in_as(@user1)
+      patch :update, params: {id: @tweet1.id, tweet: {name: 'updated tweet'}}, format: :json
+      expect(response.status).to eq(200)
+    end
+    it "should verify a admin can update a tweet of someone else" do
+      sign_in_as(@admin_user)
+      patch :update, params: {id: @tweet1.id, tweet: {name: 'updated tweet 2'}}, format: :json
+      expect(response.status).to eq(200)
     end
   end
 
