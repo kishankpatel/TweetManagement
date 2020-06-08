@@ -1,24 +1,14 @@
-# README
+# Tweet Management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+```bash
+bundle install
+```
 
-* Ruby version
+## Usage
+Run the following script to set up a database and create demo user.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```rails
+rails db:full_reset
+```
